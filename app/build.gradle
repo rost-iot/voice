@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    defaultConfig {
+        applicationId "com.sevenstringargs.testwatson"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile (name:'watsonsdk',ext:'aar')
+    compile 'org.apache.httpcomponents:httpclient:4.5.2'
+    compile 'com.mashape.unirest:unirest-java:1.3.1'
+    compile 'org.apache.httpcomponents:httpasyncclient:4.0.2'
+    compile 'org.json:json:20090211'
+    compile 'org.apache.httpcomponents:httpmime:4.2.5'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+}
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
+}
